@@ -5,7 +5,7 @@ def serviceAccount = env.SERVICE_ACCOUNT ?: "default"
 def releaseName = env.RELEASE_NAME ?: "releaseName"
 def namespace = env.NAMESPACE ?: "namespace"
 def registry = env.REGISTRY ?: "nm-mgmt.iic.pl.ibm.com:8500"
-def nodeSelector = env.NODE_SELECTOR ?: "beta.kubernetes.io/arch=ppc64le"
+def nodeSelector = env.NODE_SELECTOR ?: "beta.kubernetes.io/arch=amd64"
 
 podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, namespace: namespace, nodeSelector: nodeSelector, envVars: [
         envVar(key: 'NAMESPACE', value: namespace),
