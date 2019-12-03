@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: jdbc-wls
+    release: RELEASE_NAME
+  name: jdbc-wls-svc
+spec:
+  ports:
+  - name: conport
+    port: 9002
+    protocol: TCP
+    targetPort: 9002
+  - name: appport1
+    port: 7001
+    protocol: TCP
+    targetPort: 7001
+  - name: appport2
+    port: 7002
+    protocol: TCP
+    targetPort: 7002
+  selector:
+    app: jdbc-wls
+  sessionAffinity: None
+  type: NodePort
