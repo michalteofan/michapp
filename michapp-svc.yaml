@@ -2,24 +2,16 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: jdbc-wls
+    app: michapp
     release: RELEASE_NAME
-  name: jdbc-wls-svc
+  name: michapp-svc
 spec:
   ports:
-  - name: conport
-    port: 9002
+  - name: appport
+    port: 80
     protocol: TCP
-    targetPort: 9002
-  - name: appport1
-    port: 7001
-    protocol: TCP
-    targetPort: 7001
-  - name: appport2
-    port: 7002
-    protocol: TCP
-    targetPort: 7002
+    targetPort: 80
   selector:
-    app: jdbc-wls
+    app: michapp
   sessionAffinity: None
   type: NodePort

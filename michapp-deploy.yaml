@@ -1,37 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jdbc-wls
+  name: michapp
   labels:
-    app: jdbc-wls
+    app: michapp
     release: RELEASE_NAME
 spec:
   selector:
     matchLabels:
-      app: jdbc-wls
+      app: michapp
   replicas: 1
   template:
     metadata:
       labels:
-        app: jdbc-wls
+        app: michapp
     spec:
       containers:
-      - name: jdbc-wls
-        image: nm-mgmt.iic.pl.ibm.com:8500/default/jdbc-wls:BUILD_NUMBER
+      - name: michapp
+        image: nm-mgmt.iic.pl.ibm.com:8500/default/michapp:BUILD_NUMBER
         ports:
-        - containerPort: 9002
-          name: conport
-        - containerPort: 7001
+        - containerPort: 80
           name: appport
-        - containerPort: 7002
-          name: appport2
-        volumeMounts:
-        - name: jdbc-wls-vol
-          mountPath: /u01/oracle/properties/domain.properties
-          subPath: domain.properties
       nodeSelector:
         beta.kubernetes.io/arch: amd64
-      volumes:
-      - name: jdbc-wls-vol
-        configMap:
-          name: jdbc-wls-cfg
