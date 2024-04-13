@@ -1,25 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: michapp
+  name: michapp-APPNAME
   labels:
-    app: michapp
-    release: RELEASE_NAME
+    app: michapp-APPNAME
 spec:
   selector:
     matchLabels:
-      app: michapp
+      app: michapp-APPNAME
   replicas: 1
   template:
     metadata:
       labels:
-        app: michapp
+        app: michapp-APPNAME
     spec:
       containers:
-      - name: michapp
-        image: nm-mgmt.iic.pl.ibm.com:8500/default/michapp:BUILD_NUMBER
+      - name: michapp-APPNAME
+        image: nm-mgmt.iic.pl.ibm.com:8500/NAMESPACE/michapp-APPNAME:BUILD_NUMBER
         ports:
         - containerPort: 80
           name: appport
       nodeSelector:
-        beta.kubernetes.io/arch: amd64
+        beta.kubernetes.io/arch: ppc64le
