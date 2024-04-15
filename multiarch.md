@@ -28,6 +28,12 @@ OCP cluster registry: https://default-route-openshift-image-registry.apps.yyy.yy
 
 Lab workstation: ssh labuserX@10.ZZ.ZZ.ZZ
 
+## Login to OpenShift and create new project
+
+```
+oc login -u labuser0 -p https://api.yyy.yyy.yy:6443
+```
+
 ## List nodes in cluster
 
 ```
@@ -68,6 +74,12 @@ NAME                             STATUS   ROLES                  AGE   VERSION
 [labuser0@5437wks ~]$ oc get nodes -l kubernetes.io/arch=amd64
 NAME                             STATUS   ROLES    AGE    VERSION
 5437tenobcy.yyy.yyy.yy   Ready    worker   3d8h   v1.28.7+f1b5f6c
+```
+
+## Check architecture specific Machine Config Pools
+
+```
+oc get mcp
 ```
 
 ## Login to OpenShift and create new project
@@ -208,5 +220,6 @@ oc logs pod
 oc get node
 oc describe node
 ```
-
+and
+https://
 
